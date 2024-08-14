@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .clock {
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .time {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock" id="clock">
+            <div class="time" id="time">00:00:00</div>
+            <div class="date" id="date">YYYY-MM-DD</div>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const date = now.toISOString().split('T')[0];
+            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('date').textContent = date;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+    </script>
+</body>
+
+</html>
